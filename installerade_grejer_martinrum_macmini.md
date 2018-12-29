@@ -81,7 +81,7 @@ ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications
 
 
 
-### https://bitbucket.org/mituharu/emacs-mac.git
+### Alt som inte funkade - https://bitbucket.org/mituharu/emacs-mac.git
 brew install autoconf
 brew install texinfo # innehåller nyare version av makeinfo som behövs
 git clone https://bitbucket.org/mituharu/emacs-mac.git
