@@ -32,6 +32,7 @@ npm install -g elm-format
 brew install macvim
 brew cask install graphiql
 brew install elixir
+brew install postgres
 
 ## Mongodb
 brew install mongodb
@@ -98,8 +99,11 @@ autocmd FileType vim let b:vcm_tab_complete = 'vim' >> .vimrc
 ## Fixa xcode-select: error: (xed funkar nu)
 sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
-
-
+## Elixir
+### Phoenix
+https://code.likeagirl.io/how-to-install-elixir-and-phoenix-on-mac-dc21f8ce5a15
+mix local.hex 
+mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 
 # Kortkommandon
 cmd-§ - Flytta fokus till nästa fönster
