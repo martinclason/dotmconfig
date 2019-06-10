@@ -16,6 +16,7 @@
 * Tmux
 * Elm
 * Node js (npm)
+* Cocoapods (inte på macminin)
 
 # Terminalkommandon
 ```
@@ -34,6 +35,8 @@ brew install macvim
 brew cask install graphiql
 brew install elixir
 brew install postgres
+sudo gem install cocoapods
+pod setup
 ```
 ## Mongodb
 ```
