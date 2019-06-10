@@ -1,21 +1,21 @@
 # Installerade program
-Magnets
-Chrome
-VS Code
-Sublime Text
-Xcode
-Crome/Vimium
-Spotify
-Alacritty
-iTerm2
+* Magnets
+* Chrome
+* VS Code
+* Sublime Text
+* Xcode
+* Crome/Vimium
+* Spotify
+* Alacritty
+* iTerm2
 
 # Installerade program i terminal
-Homebrew
-Xcode Command Line Tools
-Git
-Tmux
-Elm
-Node js (npm)
+* Homebrew
+* Xcode Command Line Tools
+* Git
+* Tmux
+* Elm
+* Node js (npm)
 
 # Terminalkommandon
 brew install git
