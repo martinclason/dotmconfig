@@ -1,7 +1,6 @@
 set -gx NARWHAL_ENGINE jsc
 set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
 #set -gx EDITOR "Visual Studio Code"
-set -gx LANG "en_GB.UTF-8"
 alias spacemacs "env HOME=$HOME/spacemacs emacs"
 
 alias gs "git status"
@@ -9,8 +8,6 @@ alias gc "git commit"
 alias gcm "git commit -m"
 alias gcam "git commit -am"
 alias gaa "git add -A"
-
-alias l "less"
 
 alias config='/usr/bin/git --git-dir=$HOME/.mconfig.git/ --work-tree=$HOME'
 #alias emacmacs='/Applications/Emacmacs.app/Contents/MacOS/Emacs'
