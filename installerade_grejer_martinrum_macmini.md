@@ -1,23 +1,25 @@
 # Installerade program
-Magnets
-Chrome
-VS Code
-Sublime Text
-Xcode
-Crome/Vimium
-Spotify
-Alacritty
-iTerm2
+* Magnets
+* Chrome
+* VS Code
+* Sublime Text
+* Xcode
+* Crome/Vimium
+* Spotify
+* Alacritty
+* iTerm2
 
 # Installerade program i terminal
-Homebrew
-Xcode Command Line Tools
-Git
-Tmux
-Elm
-Node js (npm)
+* Homebrew
+* Xcode Command Line Tools
+* Git
+* Tmux
+* Elm
+* Node js (npm)
+* Cocoapods (inte på macminin)
 
 # Terminalkommandon
+```
 brew install git
 brew install tmux
 brew install node
@@ -33,56 +35,69 @@ brew install macvim
 brew cask install graphiql
 brew install elixir
 brew install postgres
-
+sudo gem install cocoapods
+pod setup
+```
 ## Mongodb
+```
 brew install mongodb
 sudo mkdir -p /data/db
 sudo chown isaacclason /data/db
-
+```
 ## Fish
+```
 brew install fish
 sudo echo "/usr/local/bin/fish" >> /etc/shells
 chsh -s /usr/local/bin/fish
-
+```
 ## Oh my fish
+```
 curl -L https://get.oh-my.fish | fish
-
+```
 ## bob the fish (powerline theme for fish)
+```
 omf install bobthefish
+```
 
 ### Tweaking
+```
 sudo echo "set -g theme_date_format \"+%H:%M\"" >> ~/.config/fish/config.fish
 set -U theme_nerd_fonts yes
 set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
-
+```
 ## Powerline font
+```
 brew install homebrew/cask-fonts/font-roboto-mono-for-powerline
-
+```
 ## Övrigt
+```
 ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/sublime
 defaults write com.apple.dock autohide-time-modifier -float 0.15;killall Dock
 npm install -g elm-format
-
+```
 ### Bra länk
 https://medium.com/tuannguyendotme/set-up-the-fish-shell-on-mac-step-by-step-6a77bcb2687c
 
 ## Tmux
+```
 echo "set -g default-terminal \"xterm-256color\"" >> .tmux.conf
 echo "alias tmux "tmux -u" >> .config/fish/config.fish
-
+```
 ## Vim
 ### Bra länk
 https://dougblack.io/words/a-good-vimrc.html
 
 ## Emacs
 ### Bra alt - https://github.com/railwaycat/homebrew-emacsmacport
+```
 brew tap railwaycat/emacsmacport
 brew install emacs-mac
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications
-
+```
 
 
 ### Alt som inte funkade - https://bitbucket.org/mituharu/emacs-mac.git
+```
 brew install autoconf
 brew install texinfo # innehåller nyare version av makeinfo som behövs
 git clone https://bitbucket.org/mituharu/emacs-mac.git
@@ -92,7 +107,7 @@ set -U fish_user_paths /usr/local/lib/node_modules/elm-format /usr/local/opt/tex
 ./configure --enable-mac-app CC="clang -fobjc-arc" --with-gnutls=no
 make
 make install
-
+```
 https://github.com/ajh17/VimCompletesMe
 autocmd FileType vim let b:vcm_tab_complete = 'vim' >> .vimrc
 
