@@ -1,4 +1,12 @@
-set expandtab
+" Inspiration: https://dougblack.io/words/a-good-vimrc.html
+
+" Init {{{
+" Needed to make vim play nicely with fish...
+
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+" }}}
 
 " Vim Plug {{{
 call plug#begin('~/.vim/plugged')
@@ -18,13 +26,38 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/badwolf'
+Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'dag/vim-fish'
 call plug#end()
 " }}}
 " Misc {{{
 set backspace=indent,eol,start
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
 set clipboard=unnamed
+
+set expandtab       " tabs are spaces
+
+map <C-n> :NERDTreeToggle<CR>
+" let NERDTreeMapActivateNode='<CR>'
+let g:NERDTreeDirArrows=0
+
+autocmd FileType vim let b:vcm_tab_complete = 'vim'
+
+" Matching parens
+" DoMatchParen
+
+" to change python version used by ycm
+let g:ycm_python_binary_path = '/usr/bin/python'
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+let g:ycm_autoclose_preview_window_after_completion=1
+
 " }}}
 " Spaces & Tabs {{{
 set tabstop=4           " 4 space tab
@@ -183,14 +216,9 @@ function! <SID>BuildFile()
     endif
 endfunc
 " }}}
-"
+" Syntax highlighting {{{
+autocmd BufNewFile,BufRead *.fish set syntax=fish
+" }}}
 
+" nedanstående rad måste vara sist för att lokal code folding ska fungera.
 " vim:foldmethod=marker:foldlevel=0
-
-autocmd FileType vim let b:vcm_tab_complete = 'vim'
-
-" Matching parens
-" DoMatchParen
-
-" to change python version used by ycm
-let g:ycm_python_binary_path = '/usr/bin/python'
