@@ -10,6 +10,9 @@ if status --is-interactive
     abbr gs 'git status'
     abbr gco 'git checkout'
 
+    abbr h 'cd ~'
+    abbr lsa 'ls -al'
+
     abbr l "less"
 end
 
