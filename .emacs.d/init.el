@@ -3,19 +3,50 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
  '(custom-safe-themes
    (quote
-    ("7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
+    ("4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
  '(inhibit-startup-screen t)
+ '(org-agenda-custom-commands
+   (quote
+    (("F" "Frågor som ska in i anki." todo-tree "DONE"
+      ((org-agenda-overriding-header "")))
+     ("f" "Frågor som behöver besvaras." todo-tree "TODO"
+      ((nil nil)))
+     ("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil))))
  '(package-selected-packages
    (quote
-    (helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons))))
+    (evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(fixed-pitch ((t (:family "Inconsolata" :slant normal :weight normal :height 1.0 :width normal))))
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-title ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande" :height 2.0 :underline nil))))
+ '(org-level-1 ((t (:inherit default :foreground "khaki" :box (:line-width 5 :color "#282828") :slant normal :weight normal :height 1.5 :width normal :foundry "nil" :family "Lucida Grande"))))
+ '(org-level-2 ((t (:inherit default :foreground "dark turquoise" :box (:line-width 5 :color "#282828") :slant normal :weight normal :height 1.25 :width normal :foundry "nil" :family "Lucida Grande"))))
+ '(org-level-3 ((t (:inherit default :foreground "orchid" :box (:line-width 5 :color "#282828")))))
+ '(org-level-4 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande" :height 1.1))))
+ '(org-level-5 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande"))))
+ '(org-level-6 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande"))))
+ '(org-level-7 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande"))))
+ '(org-level-8 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande"))))
+ '(org-link ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch)))))
+ '(variable-pitch ((t (:weight light :height 180 :family "Helvetica Neue")))))
 
 (require 'package)
 ;; Added by Package.el.  This must come before configurations of
@@ -58,7 +89,7 @@
 (require 'whitespace)
 (setq whitespace-style '(face empty tabs lines-tail trailing))
 (setq whitespace-line-column 79)
-(setq whitespace-global-modes '(not markdown-mode))
+(setq whitespace-global-modes '(not markdown-mode dired-mode wdired-mode))
 (global-whitespace-mode t)
 
 ;; Auto complete
@@ -271,3 +302,207 @@
 					       "begin\n"
 					       "end "
 					       ";"))))))
+
+
+;; Multiple cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+
+;; Org customization
+
+(setq org-hide-emphasis-markers t)
+
+;; Font lock for lists
+;; (font-lock-add-keywords 'org-mode
+;;                         '(("^ *\\([-]\\) "
+;;                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "-"))))))
+
+(font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(let* ((variable-tuple
+        (cond ((x-list-fonts "Helvetica Neue") '(:font "Helvetica Neue"))
+              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+              ((x-list-fonts "Verdana")         '(:font "Verdana"))
+              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+       (base-font-color     (face-foreground 'default nil 'default))
+       (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+  (custom-theme-set-faces
+   'user
+   `(org-level-8 ((t (,@headline ,@variable-tuple))))
+   `(org-level-7 ((t (,@headline ,@variable-tuple))))
+   `(org-level-6 ((t (,@headline ,@variable-tuple))))
+   `(org-level-5 ((t (,@headline ,@variable-tuple))))
+   `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+   `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
+   `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+   `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+
+
+;; fixed width
+(custom-theme-set-faces
+ 'user
+ '(variable-pitch ((t (:family "Helvetica Neue" :height 180 :weight light))))
+ '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
+
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+(add-hook 'org-mode-hook 'mixed-pitch-mode)
+(add-hook 'org-mode-hook 'visual-line-mode)
+
+(custom-theme-set-faces
+ 'user
+ '(org-block                 ((t (:inherit fixed-pitch))))
+ '(org-document-info         ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-link                  ((t (:foreground "royal blue" :underline t))))
+ '(org-meta-line             ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value        ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword       ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-tag                   ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim              ((t (:inherit (shadow fixed-pitch))))))
+
+(add-hook 'org-mode-hook (lambda () (linum-mode 0)))
+
+;; https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+
+
+;; Org capture
+
+(global-set-key (kbd "C-c c") 'org-capture)
+
+;; (add-to-list 'org-capture-templates
+;; 	     '("f" "Fråga utan svar" entry
+;; 	       (file+headline "~/unidrive/Läk/cache/frågecache.org" "Frågor utan svar")
+;; 	       "** TODO Fråga %^{Fråga}p %^G \n:PROPERTIES:\n:Fråga: \n:Svar: \n:Mål:" :empty-lines 1))
+
+;; (setq org-capture-templates
+;;       '(("t" "Todo" entry (file "~/.notes" "Tasks")
+;;          "* TODO %?\n  %i\n  %a")
+;;         ("f" "Fråga utan svar" entry
+;; 	  (file+headline "~/unidrive/Läk/cache/frågecache.org" "Frågor utan svar")
+;; 	  "** TODO Fråga %^{Fråga}p %^G \n:PROPERTIES:\n:Fråga: \n:Svar: \n:Mål:" :empty-lines 1)
+;;       ;; PURCHASE (p) Purchase template
+;;       ("pp" "PURCHASE  (p) Purchase" entry (file "~/ref.org")
+;;        "* PURCHASE %?
+;;   :PROPERTIES:
+;;   :Cost:
+;;   :Paid:
+;;   :Method:   [[fin:%^{Method|Wells Fargo Credit Account|Wells Fargo Checking Account|Wells Fargo Debit Account|GE Capital Credit Card}][%\\1]]
+;;   :Merchant: [[peo:%^{Merchant}][%\\2]]
+;;   :Link:
+;;   :Quantity:
+;;   :Via:
+;;   :Note:
+;;   :END:
+;;   :LOGBOOK:
+;;   - State \"PURCHASE\"   from \"\"           %U
+;;   :END:")))
+
+
+
+
+;; Capture Templates for TODO tasks
+(setq org-capture-templates
+      '(
+	("f" "Fråga utan svar" entry (file+headline "~/unidrive/Läk/cache/frågecache.org"
+						    "Frågor")
+"** TODO %^{Fråga}
+   Created: %T
+  :PROPERTIES:
+  :Fråga:   %\\1
+  :Svar:
+  :Mål:
+  :END:" :kill-buffer t :empty-lines 1)
+
+	("F" "Fråga med svar" entry (file+headline "~/unidrive/Läk/cache/frågecache.org"
+						    "Frågor")
+"** DONE %^{Fråga}
+   Created: %T
+  :PROPERTIES:
+  :Fråga:   %\\1
+  :Svar: %^{Svar}
+  :Mål:
+  :END:" :kill-buffer t :empty-lines 1)
+
+	("s" "Frågeskiss" entry (file+headline "~/unidrive/Läk/cache/frågecache.org"
+						    "Frågor")
+"** SKISS %^{Fråga}
+   Created: %T
+  :PROPERTIES:
+  :Fråga:
+  :Svar:
+  :Mål:
+  :END:" :kill-buffer t :empty-lines 1)
+
+;; 	("t" "Test" entry (file+headline "~/unidrive/Läk/cache/frågecache.org"
+;; 						    "Test")
+;; "** SKISS %^{PROMPT}
+;;    Created: %T
+;;   :PROPERTIES:
+;;   :Fråga:
+;;   :Svar:
+;;   :Mål:
+;;   :END:" :kill-buffer t :empty-lines 1)
+
+
+;; 	("n"
+;;          "Add a note to abc.org file "
+;;          entry
+;;          (file+headline "~/unidrive/Läk/cache/frågecache.org" "logg")
+;;          (concat "* %^{Logg} "
+;;                   "%(flet ((org-get-tags-string () \":NOTE:\")) (org-set-tags))"
+;;                   " :NOTE:\n%?")
+;;          :prepend t
+;;          :empty-lines 1
+;;          )
+	))
+
+
+(defun my-capture-hook ()
+  (when (string= "t" (plist-get org-capture-plist :key))
+    (org-align-all-tags)))
+
+(add-hook 'org-capture-mode-hook #'my-capture-hook)
+
+
+(defun find-user-init-file ()
+  "Edit the `user-init-file', in another window."
+  (interactive)
+  (find-file-other-window "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "C-c i") #'find-user-init-file)
+
+
+(setq org-todo-keyword-faces
+      '(("SKISS" . org-warning) ("TODO" . "yellow")))
+;;	("TODO" . org-warning) ("STARTED" . "yellow")))
+;;        ("DONE" . (:foreground "green" :weight bold))))
+
+
+;; Agenda
+
+(global-set-key (kbd "C-c a") 'org-agenda)
+
+
+(defun org-make-file-link (start end)
+  "Create link"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((s (buffer-substring start end)))
+	(delete-region start end)
+	(insert
+	 (org-make-link-string "file:hej" s))
+	
+	)))
+
+
+
+(global-set-key (kbd "C-c l") 'org-make-file-link)
