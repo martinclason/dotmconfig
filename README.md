@@ -1,4 +1,4 @@
-# Martins dotfiles
+# mconfig: Martins dotfiles
 
 ## Installation
 Run 'install.sh' and it will automatically create symlinks to the mconfig directory for the following files:
