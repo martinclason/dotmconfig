@@ -14,5 +14,6 @@ if status --is-interactive
     abbr lsa 'ls -al'
 
     abbr l "less"
+    abbr em "emacs"
 end
 

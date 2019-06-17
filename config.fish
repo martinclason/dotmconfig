@@ -22,8 +22,8 @@ set -gx LANG "en_GB.UTF-8"
 set -x EDITOR vim
 
 # Abbreviations
-if test -f ./abbr.fish
-    source abbr.fish
+if test -f ~/.config/fish/abbr.fish
+    source ~/.config/fish/abbr.fish
 end
 
 function mkcd 
