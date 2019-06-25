@@ -6,9 +6,12 @@ if status --is-interactive
     abbr gcm 'git commit -m'
     abbr ga 'git add'
     abbr gaa 'git add --all'
-    abbr gp 'git pull'
+    abbr gp 'git push'
     abbr gs 'git status'
     abbr gco 'git checkout'
+    abbr gf 'git fetch'
+    abbr gd 'git diff'
+    abbr gds 'git diff --staged'
 
     abbr h 'cd ~'
     abbr lsa 'ls -al'
