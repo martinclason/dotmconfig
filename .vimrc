@@ -7,7 +7,6 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 " }}}
-
 " Vim Plug {{{
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
@@ -29,6 +28,7 @@ Plug 'sjl/badwolf'
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'dag/vim-fish'
+Plug 'vim-ruby/vim-ruby'
 call plug#end()
 " }}}
 " Misc {{{
@@ -219,6 +219,9 @@ endfunc
 " Syntax highlighting {{{
 autocmd BufNewFile,BufRead *.fish set syntax=fish
 " }}}
+
+" För att stänga av experimental clangd för ycm. (https://github.com/Valloric/YouCompleteMe#installation)
+let g:ycm_use_clangd = 0
 
 " nedanstående rad måste vara sist för att lokal code folding ska fungera.
 " vim:foldmethod=marker:foldlevel=0
