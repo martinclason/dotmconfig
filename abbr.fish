@@ -12,6 +12,10 @@ if status --is-interactive
     abbr gf 'git fetch'
     abbr gd 'git diff'
     abbr gds 'git diff --staged'
+    abbr gba 'git branch -a'
+    abbr gpl 'git pull'
+
+    abbr pi 'pod install'
 
     abbr h 'cd ~'
     abbr lsa 'ls -al'
