@@ -12,6 +12,7 @@ if status --is-interactive
 
     abbr h 'cd ~'
     abbr lsa 'ls -al'
+    abbr c 'clear'
 
     abbr l "less"
 end
