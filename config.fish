@@ -4,6 +4,7 @@ set -gx NARWHAL_ENGINE jsc
 set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
 #set -gx EDITOR "Visual Studio Code"
 set -gx LANG "en_GB.UTF-8"
+set -g Z_SCRIPT_PATH ~/.z
 
 
 #alias spacemacs "env HOME=$HOME/spacemacs emacs"
