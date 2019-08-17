@@ -22,6 +22,7 @@ if status --is-interactive
     abbr c 'clear'
 
     abbr l "less"
+    abbr o "open"
     abbr em "emacs"
 end
 
