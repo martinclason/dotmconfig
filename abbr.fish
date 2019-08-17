@@ -14,6 +14,7 @@ if status --is-interactive
     abbr gds 'git diff --staged'
     abbr gba 'git branch -a'
     abbr gpl 'git pull'
+    abbr gl 'git log'
 
     abbr pi 'pod install'
 
@@ -22,6 +23,8 @@ if status --is-interactive
     abbr c 'clear'
 
     abbr l "less"
+    abbr o "open"
+    abbr ot "open -t"
     abbr em "emacs"
 end
 
