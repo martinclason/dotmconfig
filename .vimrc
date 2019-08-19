@@ -29,6 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'dag/vim-fish'
 Plug 'elmcast/elm-vim'
+Plug 'valloric/python-indent'
 call plug#end()
 " }}}
 " Misc {{{
@@ -55,6 +56,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Open new spilts to the right and below instead
+set splitbelow
+set splitright
 
 let g:ycm_autoclose_preview_window_after_completion=1
 
@@ -152,6 +157,11 @@ augroup configgroup
     autocmd BufEnter *.sh setlocal shiftwidth=2
     autocmd BufEnter *.sh setlocal softtabstop=2
     autocmd BufEnter *.py setlocal tabstop=4
+    autocmd BufEnter *.py setlocal softtabstop=4
+    autocmd BufEnter *.py setlocal shiftwidth=4
+    autocmd BufEnter *.py setlocal textwidth=79
+    autocmd BufEnter *.py setlocal expandtab
+    autocmd BufEnter *.py setlocal autoindent
     autocmd BufEnter *.md setlocal ft=markdown
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json

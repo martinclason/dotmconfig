@@ -1,4 +1,4 @@
-set fish_user_paths /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin
+set fish_user_paths /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin
 
 set -gx NARWHAL_ENGINE jsc
 set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
