@@ -15,6 +15,8 @@ if status --is-interactive
     abbr gba 'git branch -a'
     abbr gpl 'git pull'
     abbr gl 'git log'
+    abbr gri 'git rebase --interactive'
+    abbr gri2 'git rebase --interactive HEAD~2'
 
     abbr pi 'pod install'
 

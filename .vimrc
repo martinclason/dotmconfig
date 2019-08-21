@@ -162,6 +162,7 @@ augroup configgroup
     autocmd BufEnter *.py setlocal textwidth=79
     autocmd BufEnter *.py setlocal expandtab
     autocmd BufEnter *.py setlocal autoindent
+    autocmd BufEnter *.hs setlocal autoindent
     autocmd BufEnter *.md setlocal ft=markdown
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
