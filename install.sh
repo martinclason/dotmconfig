@@ -16,7 +16,7 @@ try_link .emacs.d/init.el ~/.emacs.d/init.el
 try_link config.fish ~/.config/fish/config.fish
 try_link abbr.fish ~/.config/fish/abbr.fish
 try_link .vimrc ~/.vimrc
-
+try_link init.vim ~/.config/nvim/init.vim
 #ln -s ~/.emacs.d/init.el ./.emacs.d/init.el
 #ln -s ~/.config/fish/config.fish ./config.fish
 #ln -s ~/.vimrc ./.vimrc
