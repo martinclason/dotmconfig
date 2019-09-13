@@ -5,6 +5,7 @@ set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
 #set -gx EDITOR "Visual Studio Code"
 set -gx LANG "en_GB.UTF-8"
 set -g Z_SCRIPT_PATH ~/.z
+set -g theme_date_format "+%H:%M"
 
 
 #alias spacemacs "env HOME=$HOME/spacemacs emacs"
