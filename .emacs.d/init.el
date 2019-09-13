@@ -5,9 +5,12 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#3c3836" "#fb4934" "#b8bb26" "#fabd2f" "#83a598" "#d3869b" "#8ec07c" "#ebdbb2"])
+ '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
+    ("e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
  '(inhibit-startup-screen t)
  '(org-agenda-custom-commands
    (quote
@@ -21,7 +24,8 @@
       nil))))
  '(package-selected-packages
    (quote
-    (jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons))))
+    (highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
+ '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -61,6 +65,7 @@
 ;; Themes
 
 (load-theme 'gruvbox)
+;;(load-theme 'adwaita)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Settings
