@@ -18,6 +18,7 @@ try_link abbr.fish ~/.config/fish/abbr.fish
 try_link .vimrc ~/.vimrc
 try_link init.vim ~/.config/nvim/init.vim
 try_link alacritty.yml ~/.config/alacritty/alacritty.yml
+try_link .tmux.conf ~/.tmux.conf
 #ln -s ~/.emacs.d/init.el ./.emacs.d/init.el
 #ln -s ~/.config/fish/config.fish ./config.fish
 #ln -s ~/.vimrc ./.vimrc

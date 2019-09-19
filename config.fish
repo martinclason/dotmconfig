@@ -7,6 +7,7 @@ set -gx LANG "en_GB.UTF-8"
 set -g Z_SCRIPT_PATH ~/.z
 set -g theme_date_format "+%H:%M"
 
+#set -g TERM "xterm-256color-italic"
 
 #alias spacemacs "env HOME=$HOME/spacemacs emacs"
 #alias gs "git status"
@@ -20,6 +21,8 @@ set -g theme_date_format "+%H:%M"
 #alias config='/usr/bin/git --git-dir=$HOME/.mconfig.git/ --work-tree=$HOME'
 #alias emacmacs='/Applications/Emacmacs.app/Contents/MacOS/Emacs'
 #alias unidrive="cd '/Users/martinclason/Library/Mobile Documents/3L68KQB4HG~com~readdle~CommonDocuments/Documents'"
+
+alias tvim "env TERM=xterm-256color vim"
 
 set -x EDITOR vim
 
