@@ -19,7 +19,7 @@
 * Cocoapods (inte på macminin)
 
 # Terminalkommandon
-```
+```bash
 brew install git
 brew install tmux
 brew install node
@@ -92,7 +92,8 @@ https://dougblack.io/words/a-good-vimrc.html
 ```
 brew tap railwaycat/emacsmacport
 brew install emacs-mac
-ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications
+# ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications
+ln -s /usr/local/opt/emacs-mac/Emacs.app/Contents/MacOS/Emacs.sh /usr/local/bin/emacmacs
 ```
 
 
@@ -117,7 +118,7 @@ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 ## Elixir
 ### Phoenix
 https://code.likeagirl.io/how-to-install-elixir-and-phoenix-on-mac-dc21f8ce5a15
-mix local.hex 
+mix local.hex
 mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 
 # Kortkommandon
