@@ -37,6 +37,10 @@ set backspace=indent,eol,start
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
 set clipboard=unnamed
 
+" Hybrid relative line numbers
+" https://jeffkreeftmeijer.com/vim-number/
+set number relativenumber
+
 set expandtab       " tabs are spaces
 
 map <C-n> :NERDTreeToggle<CR>
