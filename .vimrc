@@ -54,6 +54,8 @@ autocmd FileType vim let b:vcm_tab_complete = 'vim'
 
 " to change python version used by ycm
 let g:ycm_python_binary_path = '/usr/bin/python'
+" enter to accept completion
+let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
