@@ -15,7 +15,8 @@ echo "Installing mconfig dotfiles..."
 try_link .emacs.d/init.el ~/.emacs.d/init.el
 try_link config.fish ~/.config/fish/config.fish
 try_link abbr.fish ~/.config/fish/abbr.fish
-try_link .vimrc ~/.vimrc
+#try_link .vimrc ~/.vimrc
+try_link .vim ~/.vim
 try_link init.vim ~/.config/nvim/init.vim
 try_link alacritty.yml ~/.config/alacritty/alacritty.yml
 try_link .tmux.conf ~/.tmux.conf
@@ -23,3 +24,5 @@ try_link .inputrc ~/.inputrc
 #ln -s ~/.emacs.d/init.el ./.emacs.d/init.el
 #ln -s ~/.config/fish/config.fish ./config.fish
 #ln -s ~/.vimrc ./.vimrc
+# Preferences
+try_link Preferences/net.ankiweb.dtop.plist ~/Library/Preferences/net.ankiweb.dtop.plist 

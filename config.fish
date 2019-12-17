@@ -1,6 +1,6 @@
 #set fish_user_paths /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin
 # Changed path to this to fix python error when starting swift REPL
-set fish_user_paths /usr/local/bin /usr/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin /usr/bin/swift
+set fish_user_paths /usr/local/bin /usr/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /usr/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin /usr/bin/swift
 
 set -gx NARWHAL_ENGINE jsc
 set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
@@ -8,7 +8,7 @@ set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
 set -gx LANG "en_GB.UTF-8"
 set -g Z_SCRIPT_PATH ~/.z
 set -g theme_date_format "+%H:%M"
-
+#set -g TERM "xterm+256color"
 #set -g TERM "xterm-256color-italic"
 
 #alias spacemacs "env HOME=$HOME/spacemacs emacs"
