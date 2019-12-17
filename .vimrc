@@ -22,6 +22,7 @@ Plug 'scrooloose/syntastic'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/badwolf'
@@ -30,6 +31,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'dag/vim-fish'
 Plug 'elmcast/elm-vim'
 Plug 'valloric/python-indent'
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 " }}}
 " Misc {{{
@@ -150,6 +152,10 @@ let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
+
+" cpp enhanced https://github.com/octol/vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
 " }}}
 " AutoGroups {{{
 augroup configgroup
