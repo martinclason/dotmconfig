@@ -10,8 +10,9 @@
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
+    ("1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
  '(inhibit-startup-screen t)
+ '(markdown-header-scaling t)
  '(org-agenda-custom-commands
    (quote
     (("F" "Frågor som ska in i anki." todo-tree "DONE"
@@ -22,16 +23,20 @@
       ((agenda "" nil)
        (alltodo "" nil))
       nil))))
+ '(org-babel-load-languages (quote ((C . t) (emacs-lisp . t))))
  '(package-selected-packages
    (quote
     (highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
- '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7"))))
+ '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7")))
+ '(scroll-margin 8))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(fixed-pitch ((t (:family "Inconsolata" :slant normal :weight normal :height 1.0 :width normal))))
+ '(markdown-header-face-7 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Helvetica Neue"))))
+ '(markdown-header-face-8 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Helvetica Neue"))))
  '(org-block ((t (:inherit fixed-pitch))))
  '(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
@@ -317,7 +322,56 @@
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
+;; Markdown customization
+;; (add-hook 'markdown-mode-hook 'variable-pitch-mode)
+;; (add-hook 'markdown-mode-hook 'mixed-pitch-mode)
+;; (add-hook 'markdown-mode-hook 'visual-line-mode)
+
+;; (add-hook 'markdown-mode-hook (lambda () (linum-mode 0)))
+
+
 ;; Org customization
+
+;; This file loads Org-mode and then loads the rest of our Emacs initialization from Emacs lisp
+;; embedded in literate Org-mode files.
+
+
+;; Load up Org Mode and (now included) Org Babel for elisp embedded in Org Mode files
+;; (setq dotfiles-dir (file-name-directory (or (buffer-file-name) load-file-name)))
+
+;; (let* ((org-dir (expand-file-name
+;;                  "lisp" (expand-file-name
+;;                          "org" (expand-file-name
+;;                                 "src" dotfiles-dir))))
+;;        (org-contrib-dir (expand-file-name
+;;                          "lisp" (expand-file-name
+;;                                  "contrib" (expand-file-name
+;;                                             ".." org-dir))))
+;;        (load-path (append (list org-dir org-contrib-dir)
+;;                           (or load-path nil))))
+;;   ;; load up Org-mode and Org-babel
+;;   (require 'org-install)
+;;   (require 'ob-tangle))
+
+;; ;; load up all literate org-mode files in this directory
+;; (mapc #'org-babel-load-file (directory-files dotfiles-dir t "\\.org$"))
+
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '((c++ . t)))
+
+;; (Defun my-org-keys ()
+;;   (define-key 'org-mode-map (kbd "<M-right>") nil)
+;;   (define-key 'org-mode-map (kbd "<M-left>") nil)
+;;   (define-key 'org-mode-map (kbd "<M-S-right>") 'org-metaright)
+;;   (define-key 'org-mode-map (kbd "<M-S-left>") 'org-metaleft)
+;;   ;; (local-unset-key (kbd "<M-left>"))
+;;   ;; (local-unset-key (kbd "<M-right>"))
+;;   ;; (local-set-key (kbd "<M-S-left>") 'org-metaleft)
+;;   ;; (local-set-key (kbd "<M-S-right>") 'org-metaright)
+;;   )
+
+;; (add-hook 'org-mode-hook 'my-org-keys)
 
 (setq org-hide-emphasis-markers t)
 
@@ -349,7 +403,16 @@
    `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.25))))
    `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.5))))
    `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.75))))
-   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+   `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))
+   ;; `(markdown-header-face-8 ((t (,@headline ,@variable-tuple))))
+   ;; `(markdown-header-face-7 ((t (,@headline ,@variable-tuple))))
+   ;; `(markdown-header-face-6 ((t (,@headline ,@variable-tuple))))
+   ;; `(markdown-header-face-5 ((t (,@headline ,@variable-tuple))))
+   ;; `(markdown-header-face-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+   ;; `(markdown-header-face-3 ((t (,@headline ,@variable-tuple :height 1.25))))
+   ;; `(markdown-header-face-2 ((t (,@headline ,@variable-tuple :height 1.5))))
+   ;; `(markdown-header-face-1 ((t (,@headline ,@variable-tuple :height 1.75))))
+   ))
 
 
 ;; fixed width
@@ -357,6 +420,7 @@
  'user
  '(variable-pitch ((t (:family "Helvetica Neue" :height 180 :weight light))))
  '(fixed-pitch ((t ( :family "Source Code Pro" :slant normal :weight normal :height 1.0 :width normal)))))
+
 
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 (add-hook 'org-mode-hook 'mixed-pitch-mode)
