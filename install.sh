@@ -32,6 +32,7 @@ mkdir -p ~/.config/alacritty
 try_link alacritty.yml ~/.config/alacritty/alacritty.yml
 try_link .tmux.conf ~/.tmux.conf
 try_link .inputrc ~/.inputrc
+try_link .alias.bash ~/.alias.bash
 
 # Preferences
 try_link Preferences/net.ankiweb.dtop.plist ~/Library/Preferences/net.ankiweb.dtop.plist 
