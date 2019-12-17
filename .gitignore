@@ -1,2 +1,4 @@
 .vim/plugged
 .DS_Store
+*~
+.netrwhist
