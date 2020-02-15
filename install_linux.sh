@@ -33,4 +33,5 @@ try_link .emacs.d/init.el ~/.emacs.d/init.el
 try_link .tmux.conf ~/.tmux.conf
 try_link .inputrc ~/.inputrc
 try_link .alias.bash ~/.alias.bash
-
+try_link .bashrc ~/.bashrc
+try_link .bash_profile ~/.bash_profile
