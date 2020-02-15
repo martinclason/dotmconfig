@@ -8,6 +8,12 @@ Run 'install.sh' and it will automatically create symlinks to the mconfig direct
 ~/.vimrc -> ./.vimrc
 ~/.emacs.d/init.el -> ./.emacs.d/init.el
 ```
+## Installation on linux systems without fish
+Run 'install_linux.sh'. This is dependent on the submodule 'bash-powerline' to work properly. In order to fix this you need to update this submodule by running:
+```
+git submodule init
+git submodule update
+```
 
 ## Fish
 ```
