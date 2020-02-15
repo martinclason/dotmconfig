@@ -20,7 +20,6 @@ alias gcm='git commit -m '
 alias gco='git checkout'
 #alias code='~TDDE18/code/bin/code'
 alias tjagnatmake='gnatmake $(/courses/TDDD11/TJa/bin/tja_config)'
-alias getlab='~/UPP/getlab-cli/staff_cli.py'
 
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
