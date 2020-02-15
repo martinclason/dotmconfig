@@ -21,6 +21,8 @@ try_link init.vim ~/.config/nvim/init.vim
 mkdir -p ~/.emacs.d
 try_link .emacs.d/init.el ~/.emacs.d/init.el
 
+try_link bash-powerline ~/bash-powerline
+
 
 # Fish
 # mkdir -p ~/.config/fish
