@@ -1,4 +1,11 @@
+alias getlab=~/Rättning/getlab-cli/staff_cli.py
+alias gl=getlab
+alias gll='getlab list tdde10vt20'
+alias glg='getlab get tdde10vt20'
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+# export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 #source ~/.bash-powerline.sh
 
 shopt -s autocd # Allows you to cd into directory merely by typing the directory name.
