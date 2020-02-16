@@ -293,17 +293,17 @@
 
 
 ;; Auto jump
-(load "~/.emacs.d/auto-jump.el")
-(global-set-key (kbd "C-c SPC") 'auto-jump-deduce)
+;;(load "~/.emacs.d/auto-jump.el")
+;; (global-set-key (kbd "C-c SPC") 'auto-jump-deduce)
 
-(add-hook 'c++-mode-hook
-	  '(lambda ()
-	     (auto-jump-init '(("for" . ("for ("
-					 "; "
-					 "; "
-					 ")\n{\n"
-					 "\n};"
-					 ""))))))
+;; (add-hook 'c++-mode-hook
+;; 	  '(lambda ()
+;; 	     (auto-jump-init '(("for" . ("for ("
+;; 					 "; "
+;; 					 "; "
+;; 					 ")\n{\n"
+;; 					 "\n};"
+;; 					 ""))))))
 
 (add-hook 'ada-mode-hook
 	  '(lambda ()
