@@ -28,5 +28,8 @@ if status --is-interactive
     abbr o "open"
     abbr ot "open -t"
     abbr em "emacs"
+
+    abbr gll "getlab list tdde10vt20"
+    abbr glg "getlab get tdde10vt20"
 end
 
