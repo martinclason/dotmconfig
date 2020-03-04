@@ -70,7 +70,8 @@ set splitbelow
 set splitright
 
 let g:ycm_autoclose_preview_window_after_completion=1
-
+" Set comment style
+autocmd FileType c,cpp,java setl cms=//%s
 " }}}
 " Spaces & Tabs {{{
 set tabstop=4           " 4 space tab
