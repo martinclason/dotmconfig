@@ -24,11 +24,14 @@
        (alltodo "" nil))
       nil))))
  '(org-babel-load-languages (quote ((C . t) (emacs-lisp . t))))
+ '(org-bullets-bullet-list (quote ("◉" "○")))
+ '(org-hierarchical-todo-statistics nil)
  '(package-selected-packages
    (quote
-    (highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
+    (htmlize highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
  '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7")))
- '(scroll-margin 8))
+ '(scroll-margin 8)
+ '(whitespace-global-modes (quote (not markdown-mode dired-mode wdired-mode org-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -319,7 +322,16 @@
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 
 (require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; (add-hook 'org-mode-hook (lambda ()
+;; 			   (begin
+;; 			    (org-bullets-mode 1)
+;; 			    (setq whitespace-style (delete 'lines-tail whitespace-style)))))
+(add-hook 'org-mode-hook (lambda ()
+			   (org-bullets-mode 1)))
+(add-hook 'org-mode-hook 'org-indent-mode)
+(add-hook 'org-mode-hook (lambda ()
+			   (setq whitespace-style
+				 (remove 'lines-tail whitespace-style))))
 
 
 ;; Markdown customization
@@ -580,3 +592,13 @@
 ;; Elpy
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t) ; optional
+
+
+
+;; Own functions
+(defun no_tail_lines ()
+  (setq whitespace-style (remove 'lines-tail whitespace-style)))
+
+
+(require 'labass-init "~/.emacs.d/labass-init.el")
+;(load "labass-init.el")
