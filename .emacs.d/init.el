@@ -10,8 +10,11 @@
  '(custom-enabled-themes (quote (gruvbox)))
  '(custom-safe-themes
    (quote
-    ("1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
+    ("a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "8e797edd9fa9afec181efbfeeebf96aeafbd11b69c4c85fa229bb5b9f7f7e66c" "b583823b9ee1573074e7cbfd63623fe844030d911e9279a7c8a5d16de7df0ed0" "2b9dc43b786e36f68a9fd4b36dd050509a0e32fe3b0a803310661edb7402b8b6" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "e2fd81495089dc09d14a88f29dfdff7645f213e2c03650ac2dd275de52a513de" "3da031b25828b115c6b50bb92a117f5c0bbd3d9d0e9ba5af3cd2cb9db80db1c2" "4639288d273cbd3dc880992e6032f9c817f17c4a91f00f3872009a099f5b3f84" "7f89ec3c988c398b88f7304a75ed225eaac64efa8df3638c815acc563dfd3b55" default)))
  '(inhibit-startup-screen t)
+ '(irony-additional-clang-options
+   (quote
+    ("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
  '(markdown-header-scaling t)
  '(org-agenda-custom-commands
    (quote
@@ -25,12 +28,14 @@
       nil))))
  '(org-babel-load-languages (quote ((C . t) (emacs-lisp . t))))
  '(org-bullets-bullet-list (quote ("◉" "○")))
+ '(org-hide-emphasis-markers t)
  '(org-hierarchical-todo-statistics nil)
  '(package-selected-packages
    (quote
-    (htmlize highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
+    (company-irony irony htmlize highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
  '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7")))
  '(scroll-margin 8)
+ '(send-mail-function (quote mailclient-send-it))
  '(whitespace-global-modes (quote (not markdown-mode dired-mode wdired-mode org-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -44,8 +49,8 @@
  '(org-document-info ((t (:foreground "dark orange"))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-title ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande" :height 2.0 :underline nil))))
- '(org-level-1 ((t (:inherit default :foreground "khaki" :box (:line-width 5 :color "#282828") :slant normal :weight normal :height 1.5 :width normal :foundry "nil" :family "Lucida Grande"))))
- '(org-level-2 ((t (:inherit default :foreground "dark turquoise" :box (:line-width 5 :color "#282828") :slant normal :weight normal :height 1.25 :width normal :foundry "nil" :family "Lucida Grande"))))
+ '(org-level-1 ((t (:inherit default :foreground "#fdf4c1" :slant normal :weight bold :height 1.75 :width normal :foundry "nil" :family "Helvetica Neue"))))
+ '(org-level-2 ((t (:inherit default :foreground "#fdf4c1" :slant normal :weight bold :height 1.5 :width normal :foundry "nil" :family "Helvetica Neue"))))
  '(org-level-3 ((t (:inherit default :foreground "orchid" :box (:line-width 5 :color "#282828")))))
  '(org-level-4 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande" :height 1.1))))
  '(org-level-5 ((t (:inherit default :weight bold :foreground "#fdf4c1" :font "Lucida Grande"))))
@@ -293,6 +298,12 @@
 (add-hook 'c++-mode-hook 'my-c++-hook)
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 ;; (setq auto-mode-alist (cons '("\\.h$" . c++-mode) auto-mode-alist))
+
+
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+(setq-default c-basic-offset 4)
 
 
 ;; Auto jump
@@ -553,6 +564,16 @@
 
 (add-hook 'org-capture-mode-hook #'my-capture-hook)
 
+;; Automatically change todo mark of whole selection in org-mode
+;; https://emacs.stackexchange.com/questions/38529/make-multiple-lines-todos-at-once-in-org-mode
+(defun my/mark-todo-in-region ()
+  (interactive)
+  (let (
+	(scope (if mark-active 'region 'tree))
+	(state (org-fast-todo-selection)))
+    (org-map-entries (lambda () (org-todo state)) nil scope)))
+
+
 
 (defun find-user-init-file ()
   "Edit the `user-init-file', in another window."
@@ -602,3 +623,40 @@
 
 (require 'labass-init "~/.emacs.d/labass-init.el")
 ;(load "labass-init.el")
+
+
+;; Irony mode
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; https://github.com/Sarcasm/irony-mode/issues/138
+; (custom-set-variables
+;    '(irony-additional-clang-options
+;      '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
+
+;; Company
+(add-hook 'after-init-hook 'global-company-mode)
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+
+
+;; My functions
+
+(defun fix-åäö (beg end)
+  "Replaces a ̊, a ̈, o ̈ with å, ä, ö respectively."
+  (interactive (if (use-region-p)
+                   (list (region-beginning) (region-end))
+                 (list nil nil)))
+  ;; (query-replace "a ̈" "ä" nil beg end)
+  (mapc (lambda (arg) (perform-replace (car arg) (cdr arg) nil nil nil nil nil beg end))
+	'(("a ̊" . "å")
+	  ("a ̈" . "ä")
+	  ("o ̈" . "ö")))
+  ;; (perform-replace "a" "ä" nil nil nil nil nil beg end)
+  ;; (perform-replace "j" "å" nil nil nil nil nil beg end)
+  )
