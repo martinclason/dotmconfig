@@ -15,6 +15,12 @@ echo "Installing mconfig dotfiles..."
 try_link .emacs.d/init.el ~/.emacs.d/init.el
 try_link config.fish ~/.config/fish/config.fish
 try_link abbr.fish ~/.config/fish/abbr.fish
+
+# omf
+try_link omf/bundle ~/.config/omf/bundle
+try_link omf/channel ~/.config/omf/channel
+try_link omf/theme ~/.config/omf/theme
+
 #try_link .vimrc ~/.vimrc
 try_link .vim ~/.vim
 try_link init.vim ~/.config/nvim/init.vim
