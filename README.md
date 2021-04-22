@@ -44,3 +44,7 @@ set -Ux LSCOLORS gxfxbEaEBxxEhEhBaDaCaD
 brew install homebrew/cask-fonts/font-roboto-mono-for-powerline
 ```
 
+## NVM
+To be able to use nvm with fish this plugin is used: https://github.com/FabioAntunes/fish-nvm.
+
+It wraps regular nvm and will automatically load when running e.g. `node`, `yarn` or `npm`. In order to have it also recognize `react-native`, the fish function `nvm_alias_function react-native` is called.
