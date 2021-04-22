@@ -1,3 +1,4 @@
+silent! py3 pass
 " Inspiration: https://dougblack.io/words/a-good-vimrc.html
 
 " Init {{{
@@ -164,6 +165,7 @@ augroup configgroup
     autocmd VimEnter * highlight clear SignColumn
     autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
     autocmd BufEnter *.cls setlocal filetype=java
+    autocmd BufEnter *.cpp,*.cc,*.h setlocal filetype=cpp
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
     autocmd BufEnter *.sh setlocal tabstop=2

@@ -15,6 +15,7 @@ if status --is-interactive
     abbr gba 'git branch -a'
     abbr gpl 'git pull'
     abbr gl 'git log'
+    abbr gr 'git rebase'
     abbr gri 'git rebase --interactive'
     abbr gri2 'git rebase --interactive HEAD~2'
 

@@ -1,6 +1,6 @@
 #set fish_user_paths /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin
 # Changed path to this to fix python error when starting swift REPL
-set fish_user_paths /usr/local/bin /usr/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /usr/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin /usr/bin/swift /Users/martinclason/opt/GNAT/2019/bin
+set fish_user_paths /usr/local/bin /usr/bin /usr/bin /bin /usr/sbin /sbin /opt/local/bin /opt/local/sbin /usr/local/sbin /Users/martinclason/narwhal/bin /Users/martinclason/opt/GNAT/2018/bin /opt/X11/bin /usr/local/share/dotnet /Users/martinclason/Utveckling/Terminal/bin /Users/martinclason/.npm-packages/bin /Users/martinclason/anaconda3/bin /Users/martinclason/.local/bin ~/.cabal/bin /Users/martinclason/.ghcup/bin /usr/bin/swift /Users/martinclason/opt/GNAT/2019/bin ~/bin /Users/martinclason/.poetry/bin
 
 set -gx NARWHAL_ENGINE jsc
 set -gx CAPP_BUILD "/Users/martinclason/Utveckling/Cappuccino/Build"
@@ -42,3 +42,10 @@ end
 function mkcd 
     mkdir $argv && cd $argv
 end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /Users/martinclason/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+#bass source ~/.nvm/nvm.sh --no-use ';' nvm use node
