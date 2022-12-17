@@ -32,7 +32,7 @@
  '(org-hierarchical-todo-statistics nil)
  '(package-selected-packages
    (quote
-    (company-irony irony htmlize highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
+    (org-download company-irony irony htmlize highlight-symbol jedi elpy haskell-mode elm-mode evil mixed-pitch org-bullets multiple-cursors helm swift-mode neotree markdown-mode gruvbox-theme flymd dash-at-point clojure-mode-extra-font-locking cider auto-complete all-the-icons)))
  '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7")))
  '(scroll-margin 8)
  '(send-mail-function (quote mailclient-send-it))
@@ -111,7 +111,7 @@
 (global-whitespace-mode t)
 
 ;; Auto complete
-(ac-config-default)
+;; (ac-config-default)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
@@ -161,6 +161,64 @@
 ;; Esc quits
 (global-set-key (kbd "<escape>") 'keyboard-quit)
 
+;; Download Evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)
+
+;; (use-package evil
+;;   :ensure t
+;;   :init
+;;   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+;;   (setq evil-want-keybinding nil)
+;;   :config
+;;   (evil-mode 1))
+
+;; (use-package evil-collection
+;;   :after evil
+;;   :ensure t
+;;   :config
+;;   (evil-collection-init))
+
+;; (define-key evil-normal-state-map [escape] 'keyboard-quit)
+;; https://stackoverflow.com/questions/8483182/evil-mode-best-practice
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+
+
+(define-key evil-normal-state-map "\C-e" 'evil-end-of-line)
+(define-key evil-insert-state-map "\C-e" 'end-of-line)
+(define-key evil-visual-state-map "\C-e" 'evil-end-of-line)
+(define-key evil-motion-state-map "\C-e" 'evil-end-of-line)
+(define-key evil-normal-state-map "\C-w" 'evil-delete)
+(define-key evil-insert-state-map "\C-w" 'evil-delete)
+(define-key evil-visual-state-map "\C-w" 'evil-delete)
+(define-key evil-normal-state-map "\C-y" 'yank)
+(define-key evil-insert-state-map "\C-y" 'yank)
+(define-key evil-visual-state-map "\C-y" 'yank)
+(define-key evil-normal-state-map "\C-k" 'kill-line)
+(define-key evil-insert-state-map "\C-k" 'kill-line)
+(define-key evil-visual-state-map "\C-k" 'kill-line)
+
+
+(define-key evil-normal-state-map "\C-u" 'evil-scroll-up)
+(define-key evil-insert-state-map "\C-u" 'evil-scroll-up)
+(define-key evil-visual-state-map "\C-u" 'evil-scroll-up)
+(define-key evil-motion-state-map "\C-u" 'evil-scroll-up)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Other
@@ -219,7 +277,44 @@
 ;; Helm
 (require 'helm-config)
 
+;; lsp config inspiration:
+;; https://emacs-lsp.github.io/lsp-mode/tutorials/CPP-guide/
 
+(setq package-selected-packages '(lsp-mode yasnippet lsp-treemacs helm-lsp
+    projectile hydra flycheck company avy which-key helm-xref dap-mode))
+
+(when (cl-find-if-not #'package-installed-p package-selected-packages)
+  (package-refresh-contents)
+  (mapc #'package-install package-selected-packages))
+
+;; sample `helm' configuration use https://github.com/emacs-helm/helm/ for details
+(helm-mode)
+(require 'helm-xref)
+(define-key global-map [remap find-file] #'helm-find-files)
+(define-key global-map [remap execute-extended-command] #'helm-M-x)
+(define-key global-map [remap switch-to-buffer] #'helm-mini)
+
+;; Have tab auto complete in helm
+(define-key helm-map (kbd "TAB") #'helm-execute-persistent-action)
+(define-key helm-map (kbd "<tab>") #'helm-execute-persistent-action)
+(define-key helm-map (kbd "C-z") #'helm-select-action)
+
+
+(which-key-mode)
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+
+(setq gc-cons-threshold (* 100 1024 1024)
+      read-process-output-max (* 1024 1024)
+      treemacs-space-between-root-nodes nil
+      company-idle-delay 0.0
+      company-minimum-prefix-length 1
+      lsp-idle-delay 0.1)  ;; clangd is fast
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (require 'dap-cpptools)
+  (yas-global-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Font-lock
@@ -464,6 +559,25 @@
 (add-hook 'org-mode-hook (lambda () (linum-mode 0)))
 
 ;; https://zzamboni.org/post/beautifying-org-mode-in-emacs/
+
+
+
+;; Org paste image from clipboard
+(defun my-org-screenshot ()
+  "Take a screenshot into a time stamped unique-named file in the
+same directory as the org-buffer and insert a link to this file."
+  (interactive)
+  (setq filename
+        (concat
+         (make-temp-name
+          (concat (buffer-file-name)
+                  "_"
+                  (format-time-string "%Y%m%d_%H%M%S_")) ) ".png"))
+  (call-process "import" nil nil nil filename)
+  (insert (concat "[[" filename "]]"))
+  (org-display-inline-images))
+
+(require 'org-download)
 
 
 ;; Org capture
