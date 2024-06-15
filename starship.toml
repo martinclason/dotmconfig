@@ -1,0 +1,13 @@
+
+right_format = """
+$cmd_duration\
+$time"""
+
+[cmd_duration]
+format = "[$duration]($style) < "
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = "%R"
+

@@ -1,5 +1,7 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
+-- :PackerInstall to install missing packages
+
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
@@ -27,12 +29,15 @@ return require('packer').startup(function(use)
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+    -- use('tpope/vim-commentary')
     use {
         'numToStr/Comment.nvim', -- "gc" to comment visual regions/linest
         config = function()
             require('Comment').setup()
         end
     }
+    use('lervag/vimtex')
+
     -- use { 'neoclide/coc.nvim', branch='release' }
 
 	use {

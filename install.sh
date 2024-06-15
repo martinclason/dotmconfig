@@ -33,6 +33,7 @@ try_link alacritty.yml ~/.config/alacritty/alacritty.yml
 try_link .tmux.conf ~/.tmux.conf
 try_link .inputrc ~/.inputrc
 try_link .alias.bash ~/.alias.bash
+try_link nvim ~/.config/nvim
 
 # Preferences
 try_link Preferences/net.ankiweb.dtop.plist ~/Library/Preferences/net.ankiweb.dtop.plist 

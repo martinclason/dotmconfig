@@ -1,5 +1,9 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 vim .keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim .keymap.set("n", "<leader>v", ":e $MYVIMRC<cr>")
+-- vim .keymap.set("n", "<S-s>", ":w<cr>")
+vim .keymap.set("n", "<leader>w", ":w<cr>")
 
 -- make sure cursor stays in middle of screen when using C-d and C-u
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
