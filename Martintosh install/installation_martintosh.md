@@ -76,6 +76,16 @@ iTerm works with 256 colors unlike terminal.
 These themes might be an alternative since they should look good in 16 ANSI aswell:
 https://github.com/nightsense/vimspectr
 
+### Kitty
+Kitty seems to work much faster than many terminal programs, e.g. iTerm. It does however not restore sessions at all if the computer turns of or you accidentally exit kitty.
+
+### Tmux
+
+Also install Tmux package manager:
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 ### Magnet
 appstore
 
