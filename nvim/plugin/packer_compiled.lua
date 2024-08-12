@@ -176,6 +176,11 @@ _G.packer_plugins = {
     path = "/Users/martinclason/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tmux-vim-navigator"] = {
+    loaded = true,
+    path = "/Users/martinclason/.local/share/nvim/site/pack/packer/start/tmux-vim-navigator",
+    url = "https://github.com/christoomey/tmux-vim-navigator"
+  },
   undotree = {
     loaded = true,
     path = "/Users/martinclason/.local/share/nvim/site/pack/packer/start/undotree",
@@ -185,6 +190,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/martinclason/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/Users/martinclason/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   }
 }
 

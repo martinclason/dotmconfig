@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
         end
     }
     use('lervag/vimtex')
+    -- use('christoomey/tmux-vim-navigator') -- tmux & split window navigation
 
     -- use { 'neoclide/coc.nvim', branch='release' }
 
